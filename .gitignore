@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+.env
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+*.log
+.mypy_cache/
+.streamlit
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+.history/
+
+# macOS
+.DS_Store
+
+# Database
+*.sqlite3
+*.db
+
+# System
+Thumbs.db
+
+# Test & Coverage
+.coverage
+htmlcov/
+*.cover
+*.py,cover
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# PDFs, Docs (if generated)
+*.pdf
+*.docx
+
+# LangChain
