@@ -15,6 +15,7 @@ from langchain_community.agent_toolkits import SQLDatabaseToolkit
 
 from langgraph.prebuilt import create_react_agent
 
+from auth import MockAuthStrategy
 from db_engine import ChinookDBEngineSingleton
 
 LLMS = [
@@ -79,11 +80,13 @@ class StaticMessages(Enum):
 
 
 # --- Authentication ---
+# Use in authenticate()
 def authenticate() -> bool:
     SessionStateKeys.IS_AUTHENTICATED.set(False)
     username = SessionStateKeys.USERNAME.get()
     password = SessionStateKeys.PASSWORD.get()
-    if username and password and len(username) > 5 and len(password) > 5:
+    strategy = MockAuthStrategy()
+    if strategy.authenticate(username, password):
         SessionStateKeys.IS_AUTHENTICATED.set(True)
         return True
     st.toast(StaticMessages.ERROR_LOGIN.value)
