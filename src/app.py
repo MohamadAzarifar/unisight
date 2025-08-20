@@ -99,19 +99,9 @@ def logout():
     SessionStateKeys.CHATHISTORY.set([])
 
 
-# --- Database ---
-def get_engine_for_chinook_db():
-    url = "https://raw.githubusercontent.com/lerocha/chinook-database/master/ChinookDatabase/DataSources/Chinook_Sqlite.sql"
-    response = requests.get(url)
-    sql_script = response.text
-    connection = sqlite3.connect(":memory:", check_same_thread=False)
-    connection.executescript(sql_script)
-    return create_engine(
-        "sqlite://",
-        creator=lambda: connection,
-        poolclass=StaticPool,
-        connect_args={"check_same_thread": False},
-    )
+# --- AI Model ---
+def llm_factory(model_name):
+    return ChatOllama(model=model_name, reasoning=False)
 
 
 # --- Chat ---
@@ -280,23 +270,6 @@ def chat_input_ui(agent_executor):
         st.session_state.CHATHISTORY.append({"role": "assistant", "content": response})
 
 
-# def chat_input_ui():
-#     prompt = st.chat_input("Let's talk about the business...")
-#     if prompt:
-#         with st.chat_message("user"):
-#             st.write(prompt)
-#         st.session_state.CHATHISTORY.append({"role": "user", "content": prompt})
-#         with st.chat_message("assistant"):
-#             response = st.write_stream(chat_stream(prompt))
-#             st.feedback(
-#                 "thumbs",
-#                 key=f"feedback_{len(st.session_state.CHATHISTORY)}",
-#                 on_change=save_feedback,
-#                 args=[len(st.session_state.CHATHISTORY)],
-#             )
-#         st.session_state.CHATHISTORY.append({"role": "assistant", "content": response})
-
-
 # --- Main App ---
 def main():
     st.title("🪐 UNISIGHT")
@@ -305,7 +278,7 @@ def main():
     DATABASE = SQLDatabase(engine)
 
     # Instantiate llm after user selects LLM
-    LLM = ChatOllama(model=SessionStateKeys.LLM.get(), reasoning=False)
+    LLM = llm_factory(SessionStateKeys.LLM.get())
 
     # Inject SQLDatabaseToolkit here
     TOOLKIT = SQLDatabaseToolkit(db=DATABASE, llm=LLM)
