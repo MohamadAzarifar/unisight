@@ -15,6 +15,8 @@ from langchain_community.agent_toolkits import SQLDatabaseToolkit
 
 from langgraph.prebuilt import create_react_agent
 
+from db_engine import ChinookDBEngineSingleton
+
 LLMS = [
     "gpt-oss:20b",
     "llama3.1",
@@ -299,7 +301,7 @@ def chat_input_ui(agent_executor):
 def main():
     st.title("🪐 UNISIGHT")
     initialize_session_state()
-    engine = get_engine_for_chinook_db()
+    engine = ChinookDBEngineSingleton.get_engine()
     DATABASE = SQLDatabase(engine)
 
     # Instantiate llm after user selects LLM
