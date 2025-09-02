@@ -20,6 +20,7 @@ LLMS = [
     "gpt-oss:20b",
     "llama3.1",
     "qwen3:0.6b",
+    "qwen3:4b",
     "gemma3n:e4b",
     "deepseek-r1",
     "sqlcoder",
@@ -102,7 +103,7 @@ def logout():
 
 # --- AI Model ---
 def llm_factory(model_name):
-    return ChatOllama(model=model_name, reasoning=False)
+    return ChatOllama(model=model_name, reasoning=True)
 
 
 # --- Chat ---
