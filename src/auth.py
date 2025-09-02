@@ -1,9 +1,7 @@
-from turtle import st
-
-
 class AuthStrategy:
     def authenticate(self, username, password):
         raise NotImplementedError
+
 
 class MockAuthStrategy(AuthStrategy):
     def authenticate(self, username, password):
