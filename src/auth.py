@@ -1,5 +1,4 @@
 from turtle import st
-from app import SessionStateKeys, StaticMessages
 
 
 class AuthStrategy:

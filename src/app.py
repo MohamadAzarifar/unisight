@@ -1,8 +1,6 @@
 from enum import Enum
 import time
 import datetime
-import sqlite3
-import requests
 
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
@@ -275,7 +273,7 @@ def chat_input_ui(agent_executor):
 
 # --- Main App ---
 def main():
-    st.title("🪐 UNISIGHT")
+    st.title("UNI🪐SIGHT")
     initialize_session_state()
     engine = ChinookDBEngineSingleton.get_engine()
     DATABASE = SQLDatabase(engine)
@@ -302,7 +300,9 @@ DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the databa
 
 To start you should ALWAYS look at the tables in the database to see what you can query.
 Do NOT skip this step.
-Then you should query the schema of the most relevant tables.
+Then you should query the schema of the most relevant tables and give me a clear answer.
+As response, create a json object contain question, query, and answer.
+
 """.format(
         tables=DATABASE.get_context,
         dialect=DATABASE.dialect,
