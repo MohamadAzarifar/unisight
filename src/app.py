@@ -1,8 +1,10 @@
-from frontend.chat import Chat
+from frontend.chat import AppChat
+from backend.llm import AppLLM
 
 
 def main():
-    Chat()
+    llm = AppLLM()
+    AppChat(llm)
 
 
 if __name__ == "__main__":

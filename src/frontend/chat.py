@@ -1,8 +1,8 @@
 import streamlit as st
 
 
-class Chat:
-    def __init__(self):
+class AppChat:
+    def __init__(self, llm):
         st.title("UNI🪐SIGHt")
 
         # Initialize chat history
@@ -21,7 +21,8 @@ class Chat:
             # Add user message to chat history
             st.session_state.messages.append({"role": "user", "content": prompt})
 
-            response = f"Echo: {prompt}"
+            # Get assistant response from LLM
+            response = llm.ask(prompt)
             # Display assistant response in chat message container
             with st.chat_message("assistant"):
                 st.markdown(response)
