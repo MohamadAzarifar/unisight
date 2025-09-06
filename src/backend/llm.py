@@ -2,11 +2,11 @@ from langchain_ollama import ChatOllama
 
 
 class AppLLM:
-    def __init__(self):
+    def __init__(self, model):
         self.__llm = ChatOllama(
-            model="qwen3:0.6b",
+            model=model,
             validate_model_on_init=True,
-            reasoning=False,
+            reasoning=True,
         )
 
     def ask(self, prompt: str) -> str:

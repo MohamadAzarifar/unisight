@@ -3,7 +3,7 @@ from backend.llm import AppLLM
 
 
 def main():
-    llm = AppLLM()
+    llm = AppLLM("qwen3:0.6b")
     AppChat(llm)
 
 
