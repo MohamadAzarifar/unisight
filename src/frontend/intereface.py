@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-class AppChat:
+class AppInterface:
     def __init__(self, llm):
         st.title("UNI🪐SIGHt")
 
