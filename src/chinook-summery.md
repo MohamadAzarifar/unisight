@@ -1,6 +1,100 @@
 # Chinook Database
 
-Of course! The Chinook database is a classic sample database, often used to practice SQL. It's modeled after a digital media store (like a mini-iTunes) and includes tables for artists, albums, media tracks, invoices, and customers.
+### **Introduction to the Chinook Schema (For Context)**
+
+The NLQ engine must understand these key tables and relationships:
+
+* **Music:** `Artist` -> `Album` -> `Track` -> `Genre` / `MediaType`
+* **Customers & Sales:** `Customer` -> `Invoice` -> `InvoiceLine` -> `Track`
+* **Employees:** `Employee` (ReportsTo for hierarchy)
+
+---
+
+### **Category 1: Business & Sales Questions**
+
+#### **Easy (Direct facts, single table or simple joins)**
+
+1. How many customers do we have?
+2. List all employees.
+3. Show me the top 5 countries by number of customers.
+4. What is the total revenue from all invoices?
+5. How many invoices were issued in 2013?
+
+#### **Intermediate (Aggregations, multiple joins, basic filtering)**
+
+6. Who is the top-selling artist by revenue?
+7. Who are our top 10 customers by total spending?
+8. What is the average invoice total?
+9. Show me the monthly sales revenue for 2012.
+10. Which sales agent has the highest total sales?
+11. How many customers does each employee support?
+12. What is the distribution of sales across different countries?
+13. Find all invoices from customers in Canada.
+14. Show me a list of customers who have never placed an invoice. (Tests understanding of `LEFT JOIN` + `NULL`).
+15. What is the most common billing city?
+
+#### **Advanced (Complex joins, sub-queries, date functions, ratios)**
+
+16. What was the single biggest invoice ever and which customer placed it?
+17. Calculate the year-over-year growth rate of sales.
+18. Find customers whose average invoice value is above the overall average.
+19. Show the sales revenue for each music genre. (Requires joining Invoice -> InvoiceLine -> Track -> Genre).
+20. Who is the highest-performing sales agent of all time? (Consider both total sales and number of customers managed).
+21. Identify customers who have bought music from more than 3 different genres.
+22. For each customer, find their first invoice date and their most recent invoice date.
+23. What percentage of our total revenue comes from the USA?
+24. Find all invoices where the customer bought a track from their own country.
+25. Analyze the sales trend: show quarterly sales totals for the last two full years.
+
+---
+
+### **Category 2: Music & Media Questions**
+
+#### **Easy (Direct facts, single table or simple joins)**
+
+1. How many tracks are in the database?
+2. List all available music genres.
+3. How many albums does the artist "U2" have?
+4. What is the longest song in the database?
+5. Show me all tracks on the album "Jagged Little Pill".
+
+#### **Intermediate (Aggregations, genre/artist analysis, playlists)**
+
+6. Which genre has the most tracks?
+7. List the top 10 artists by number of albums.
+8. What is the average length (in milliseconds) of a track in the "Rock" genre?
+9. Show me all playlists and how many tracks are in each.
+10. Which media type (e.g., MPEG, AAC) is most common?
+11. Find all tracks that are longer than 5 minutes.
+12. How many composers are listed in the database? (Tests handling of `NULL` values, as many are NULL).
+13. Show me all tracks that feature the word "Love" in the title.
+14. Which album has the most tracks?
+15. List all tracks from the "Classical" genre.
+
+#### **Advanced (Complex analysis, correlations, text parsing)**
+
+16. Who are the top 5 most prolific composers? (Assuming non-NULL composer field).
+17. For the artist "Iron Maiden", what is the average track length per album?
+18. Find artists who have released albums in at least 3 different genres.
+19. **Classic Chinook Question:** List all tracks that are not in any playlist. (Tests `LEFT JOIN` + `NULL`).
+20. Is there a correlation between track length and unit price? (e.g., are longer tracks more expensive?).
+21. Identify the most "diverse" playlist - the one with tracks from the most genres.
+22. Find the artist with the longest average track length.
+23. Show a list of albums where all tracks are from the same genre.
+24. For a given track (e.g., "Princess of the Dawn"), on which playlists does it appear?
+25. Analyze the "Rock" genre: break it down into sub-genres by looking for common keywords in track names (e.g., "Metal", "Hard", "Punk"). (This is very advanced and tests NLP/pattern matching within the NLQ engine).
+
+---
+
+### **How to Use This List for Testing**
+
+1. **Start Easy:** Begin with the "Easy" questions to test if the NLQ engine can connect to the database and perform basic queries.
+2. **Test Joins:** Move to "Intermediate" questions to assess its ability to understand and navigate the schema relationships (e.g., `Customer` to `Invoice` to `InvoiceLine`).
+3. **Challenge Understanding:** Use the "Advanced" questions to push the limits. These test complex logic, aggregation, and the engine's ability to parse nuanced user intent.
+4. **Check for Errors:** Pay attention not just to correct answers, but also to how the engine handles ambiguity or questions it can't answer. Does it provide a helpful error message or clarification prompt?
+5. **Synonyms and Phrasing:** Try rephrasing the same question. For example, "total sales" vs. "total revenue" vs. "sum of all invoices". A robust NLQ engine should handle these synonyms.
+
+This list provides a comprehensive foundation for evaluating the accuracy, depth, and user-friendliness of your NLQ application against the Chinook database.
 
 ## Here are questions you could ask, categorized by difficulty and the concepts they test
 
