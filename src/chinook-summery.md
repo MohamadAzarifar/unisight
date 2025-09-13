@@ -12,7 +12,7 @@ The NLQ engine must understand these key tables and relationships:
 
 ### **Category 1: Business & Sales Questions**
 
-#### **Easy (Direct facts, single table or simple joins)**
+#### **Easy Business & Sales Questions (Direct facts, single table or simple joins)**
 
 1. How many customers do we have?
 2. List all employees.
@@ -20,8 +20,7 @@ The NLQ engine must understand these key tables and relationships:
 4. What is the total revenue from all invoices?
 5. How many invoices were issued in 2013?
 
-#### **Intermediate (Aggregations, multiple joins, basic filtering)**
-
+**Intermediate (Aggregations, multiple joins, basic filtering)**
 6. Who is the top-selling artist by revenue?
 7. Who are our top 10 customers by total spending?
 8. What is the average invoice total?
@@ -33,8 +32,7 @@ The NLQ engine must understand these key tables and relationships:
 14. Show me a list of customers who have never placed an invoice. (Tests understanding of `LEFT JOIN` + `NULL`).
 15. What is the most common billing city?
 
-#### **Advanced (Complex joins, sub-queries, date functions, ratios)**
-
+**Advanced (Complex joins, sub-queries, date functions, ratios)**
 16. What was the single biggest invoice ever and which customer placed it?
 17. Calculate the year-over-year growth rate of sales.
 18. Find customers whose average invoice value is above the overall average.
@@ -50,7 +48,7 @@ The NLQ engine must understand these key tables and relationships:
 
 ### **Category 2: Music & Media Questions**
 
-#### **Easy (Direct facts, single table or simple joins)**
+#### **Easy Music & Media Questions (Direct facts, single table or simple joins)**
 
 1. How many tracks are in the database?
 2. List all available music genres.
@@ -58,8 +56,7 @@ The NLQ engine must understand these key tables and relationships:
 4. What is the longest song in the database?
 5. Show me all tracks on the album "Jagged Little Pill".
 
-#### **Intermediate (Aggregations, genre/artist analysis, playlists)**
-
+**Intermediate (Aggregations, genre/artist analysis, playlists)**
 6. Which genre has the most tracks?
 7. List the top 10 artists by number of albums.
 8. What is the average length (in milliseconds) of a track in the "Rock" genre?
@@ -71,8 +68,7 @@ The NLQ engine must understand these key tables and relationships:
 14. Which album has the most tracks?
 15. List all tracks from the "Classical" genre.
 
-#### **Advanced (Complex analysis, correlations, text parsing)**
-
+**Advanced (Complex analysis, correlations, text parsing)**
 16. Who are the top 5 most prolific composers? (Assuming non-NULL composer field).
 17. For the artist "Iron Maiden", what is the average track length per album?
 18. Find artists who have released albums in at least 3 different genres.
