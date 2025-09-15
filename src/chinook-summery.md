@@ -175,3 +175,71 @@ ORDER BY
 5. **ORDERS** the results to see the most prolific artists first.
 
 The Chinook database is excellent because it allows you to practice nearly every fundamental and advanced SQL concept in a clear and relatable context.
+
+## Comprehensive list of questions
+
+a comprehensive list of questions that can be asked from this database, sorted from easy to advanced based on the complexity of the underlying SQL query.
+
+### **Easy (Basic SELECT, WHERE, JOIN, GROUP BY, ORDER BY, LIMIT)**
+
+These questions typically involve filtering, joining a few tables, and simple aggregations.
+
+1.  **List all customers from a specific country (e.g., USA).**
+2.  **Find all films in a specific category (e.g., 'Action').**
+3.  **Show all tracks by a specific artist (e.g., 'U2').**
+4.  **List all employees and who they report to (using self-join).**
+5.  **Find the top 5 most expensive tracks (highest unit-price).**
+6.  **How many tracks are there in each genre?**
+7.  **List all playlists and the number of tracks in each.**
+8.  **Find all invoices for a specific customer.**
+9.  **Which actors appear in a specific film?**
+10. **What is the total length (in minutes) of a specific album?**
+11. **List all customers who are supporters (if `supporter` is a boolean flag).**
+12. **Find all films released in a specific year.**
+13. **Show all invoices from a specific date.**
+14. **How many customers do we have in each country?**
+15. **List all tracks that are part of a specific playlist.**
+
+---
+
+### **Intermediate (Subqueries, Multiple JOINs, Complex WHERE, Date Functions, String Aggregation)**
+
+These questions require combining multiple concepts, using subqueries, or more complex filtering.
+
+16. **Who is the top-selling artist based on the number of tracks sold?** (Needs invoice-line -> track -> artist)
+17. **Which customer has spent the most money?** (SUM on invoice.total or invoice-line.unit-price * quantity)
+18. **Find all customers who have never placed an invoice.** (Using a `NOT IN` or `LEFT JOIN` subquery)
+19. **What is the average rental rate for films by rating (e.g., PG, PG-13, R)?**
+20. **List the top 3 longest albums (by total track milliseconds).**
+21. **Which employee has the most customers assigned to them?** (Assuming a missing `employee` link on the `customer` table, common in such DBs)
+22. **Find all tracks that are not in any playlist.** (Subquery or `LEFT JOIN`)
+23. **Calculate the total sales for a specific month and year.**
+24. **List films that have more than 10 actors.**
+25. **Who are the top 5 actors who have appeared in the most films?**
+26. **For each genre, what is the average price of a track?**
+27. **Find all albums that have tracks in more than one genre.**
+28. **Which city has the highest number of customers?**
+29. **List the names of all playlists that contain a track from a specific artist.**
+30. **How much revenue did we generate from 'Rock' music tracks?**
+
+---
+
+### **Advanced (CTEs, Window Functions, Complex Correlated Subqueries, Conditional Logic)**
+
+These questions are analytical and often require breaking the problem into parts using CTEs or advanced functions.
+
+31. **Rank customers within each country by their total spending.** (Uses `SUM()` and `Window Functions` like `RANK()` or `DENSE_RANK()`)
+32. **Find the second highest spending customer in each country.**
+33. **Calculate the running total of sales month-by-month for the entire year.**
+34. **For each film, find the other films that share the most actors with it.** (Very complex, requires self-join on film-actor)
+35. **Identify customers whose spending is above the average spending of all customers.**
+36. **Find the month-over-month growth percentage in sales.**
+37. **List all albums where every track is in the same genre.**
+38. **Who is the most versatile actor? (The actor who has acted in the most number of distinct film categories).**
+39. **For each employee, calculate the percentage their customers' sales contribute to the employee's total sales.** (Requires a link from customer to employee)
+40. **Find the "golden" customer for each year: the customer who spent the most in that specific year.** (Uses window functions with partitioning by year)
+41. **Classify customers into tiers like 'Gold', 'Silver', 'Bronze' based on their total spending.**
+42. **Calculate the average time between a customer's invoices.**
+43. **Find all tracks that are longer than the average track length of their genre.**
+44. **Which artist has the highest average track length?**
+45. **Generate a report showing sales by genre and by month (a pivot table concept).**
